@@ -1,0 +1,5 @@
+# Windows thumbnail cache
+Thumbs.db
+
+# VS Code settings
+.vscode/
