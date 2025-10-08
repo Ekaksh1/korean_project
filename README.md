@@ -1,2 +1,0 @@
-# korean_project
-project
