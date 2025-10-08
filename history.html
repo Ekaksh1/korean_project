@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Hanbok - Korean Traditional Wear</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E3FDFD 0%, #CBF1F5 100%);
+            min-height: 100vh;
+            padding-top: 90px; /* Space for fixed header */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* New Header Styles */
+        .main-header {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(135deg, #CBF1F5 0%, #71C9CE 50%, #E3FDFD 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.2), 0 4px 8px rgba(203, 241, 245, 0.3);
+            border: 1px solid rgba(113, 201, 206, 0.1);
+        }
+        
+        .main-header h1 {
+            color: #2F7E84;
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        .main-header p {
+            color: #2F7E84;
+            font-size: 1.1em;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* Fixed Header Bar */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .fixed-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title .korean-accent {
+            width: 15px;
+            height: 2px;
+            background: linear-gradient(90deg, #cd2e3a, #0047a0);
+            border-radius: 1px;
+        }
+
+        /* Navigation Styles */
+        .header-navigation {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .fixed-header-content {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .header-title {
+                font-size: 1.2em;
+            }
+            
+            .header-navigation {
+                gap: 10px;
+            }
+            
+            .nav-button {
+                padding: 8px 16px;
+                font-size: 0.85em;
+            }
+            
+            body {
+                padding-top: 120px;
+            }
+        }
+        
+        .history-section {
+            margin: 50px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 241, 245, 0.2) 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .history-section h2 {
+            color: #71C9CE;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(203, 241, 245, 0.2) 0%, rgba(255, 255, 255, 0.4) 100%);
+            border-left: 4px solid #71C9CE;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(113, 201, 206, 0.1);
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.2);
+            background: linear-gradient(135deg, rgba(203, 241, 245, 0.3) 0%, rgba(255, 255, 255, 0.5) 100%);
+        }
+        
+        .timeline-period {
+            flex-shrink: 0;
+            width: 120px;
+            font-weight: bold;
+            color: #71C9CE;
+            font-size: 1.1em;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            margin-left: 20px;
+        }
+        
+        .timeline-content h3 {
+            color: #71C9CE;
+            margin: 0 0 8px 0;
+            font-size: 1.2em;
+        }
+        
+        .timeline-content p {
+            margin: 0;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .historical-note {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        .historical-note h3 {
+            color: #71C9CE;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .historical-note p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .additional-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 241, 245, 0.2) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(113, 201, 206, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(203, 241, 245, 0.3) 100%);
+        }
+
+        .info-card h3 {
+            color: #71C9CE;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .info-card p, .info-card ul {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .info-card li {
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 30px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 50%, #CBF1F5 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.3), 0 4px 12px rgba(203, 241, 245, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+        }
+        
+        .copyright {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-period {
+                width: auto;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-content {
+                margin-left: 0;
+            }
+        }
+        
+        /* Elegant Navigation Buttons */
+        .navigation-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(227, 253, 253, 0.7) 100%);
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.25);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(113, 201, 206, 0.2);
+        }
+        
+        .navigation-title {
+            color: #71C9CE;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+        
+        .nav-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .elegant-nav-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 35px;
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(113, 201, 206, 0.3), 0 2px 8px rgba(203, 241, 245, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+        }
+        
+        .elegant-nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .elegant-nav-button:hover::before {
+            left: 100%;
+        }
+        
+        .elegant-nav-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(113, 201, 206, 0.4), 0 6px 15px rgba(203, 241, 245, 0.3);
+            background: linear-gradient(135deg, #87CEEB 0%, #71C9CE 100%);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .elegant-nav-button:active {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.35);
+        }
+        
+        .button-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .nav-description {
+            color: #4A9FA5;
+            font-size: 1em;
+            margin-top: 20px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .elegant-nav-button {
+                width: 80%;
+                max-width: 280px;
+            }
+            
+            .navigation-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Main content of the page -->
+        
+        <section class="history-section">
+            <h2>한복의 역사 (History of Hanbok)</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-period">고구려 시대<br>(37 BC - 668 AD)</div>
+                    <div class="timeline-content">
+                        <h3>Ancient Origins</h3>
+                        <p>The earliest forms of Korean traditional clothing emerged during the Goguryeo period. Simple, practical garments were worn by both nobility and commoners, featuring basic jeogori and chima designs.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">통일신라<br>(668-935 AD)</div>
+                    <div class="timeline-content">
+                        <h3>Cultural Refinement</h3>
+                        <p>During the Unified Silla period, hanbok began incorporating influences from Tang Dynasty China, developing more sophisticated silhouettes and decorative elements that reflected social status.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">고려 시대<br>(918-1392)</div>
+                    <div class="timeline-content">
+                        <h3>Mongolian Influence</h3>
+                        <p>The Goryeo dynasty saw significant changes in hanbok design due to Mongol influence. Clothing became more form-fitting, and new accessories like the 'gache' (ornamental hairpiece) were introduced.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">조선 시대<br>(1392-1897)</div>
+                    <div class="timeline-content">
+                        <h3>Golden Age of Hanbok</h3>
+                        <p>The Joseon Dynasty marked the peak of hanbok development. The characteristic high-waisted chima and shortened jeogori emerged, along with strict regulations governing colors and designs based on social class.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">근현대<br>(1900-현재)</div>
+                    <div class="timeline-content">
+                        <h3>Modern Revival</h3>
+                        <p>After periods of suppression during Japanese occupation and Western influence, hanbok has experienced a modern renaissance. Contemporary designers blend traditional elements with modern aesthetics.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="historical-note">
+                <h3>Cultural Significance</h3>
+                <p><strong>Philosophy:</strong> Hanbok embodies the Korean aesthetic principle of "자연미" (natural beauty), emphasizing harmony between human and nature through its flowing lines and natural colors.</p>
+                <p><strong>Symbolism:</strong> The curved lines of the jeogori represent the heavens, while the straight lines of the chima represent the earth, reflecting the Korean cosmological worldview.</p>
+                <p><strong>Social Function:</strong> Historically, hanbok served as a visual indicator of social status, marital status, and age, with specific colors and patterns reserved for different classes and occasions.</p>
+                <p><strong>Modern Legacy:</strong> Today, hanbok is worn during important celebrations like weddings, holidays (설날, 추석), and cultural festivals, maintaining its role as a symbol of Korean identity and heritage.</p>
+            </div>
+        </section>
+
+        <div class="additional-sections">
+            <div class="info-card">
+                <h3>Traditional Colors & Materials</h3>
+                <p><strong>오방색 (Five Cardinal Colors):</strong></p>
+                <ul>
+                    <li><strong>빨강 (Red):</strong> Represents fire, summer, and joy</li>
+                    <li><strong>파랑 (Blue):</strong> Represents wood, spring, and growth</li>
+                    <li><strong>노랑 (Yellow):</strong> Represents earth, center, and balance</li>
+                    <li><strong>하양 (White):</strong> Represents metal, autumn, and purity</li>
+                    <li><strong>검정 (Black):</strong> Represents water, winter, and wisdom</li>
+                </ul>
+                <p><strong>Materials:</strong> Traditional hanbok was made from silk, hemp, cotton, and ramie, chosen based on season and social status.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Regional Variations</h3>
+                <p>Different regions of Korea developed their own hanbok styles:</p>
+                <ul>
+                    <li><strong>Seoul Style:</strong> Elegant and refined, with shorter jeogori</li>
+                    <li><strong>Jeolla Province:</strong> Known for vibrant colors and elaborate decorations</li>
+                    <li><strong>Gyeongsang Province:</strong> Featured more conservative designs</li>
+                    <li><strong>Northern Regions:</strong> Practical designs adapted to colder climates</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>Modern Hanbok Movement</h3>
+                <p>Contemporary hanbok has evolved while preserving traditional elements:</p>
+                <ul>
+                    <li><strong>Daily Hanbok:</strong> Simplified designs for everyday wear</li>
+                    <li><strong>Fusion Hanbok:</strong> Mixing traditional and Western elements</li>
+                    <li><strong>K-Fashion:</strong> Influence on global fashion trends</li>
+                    <li><strong>Cultural Events:</strong> Revival in weddings and festivals</li>
+                </ul>
+                <p>Young designers continue to innovate while respecting traditional craftsmanship and cultural significance.</p>
+            </div>
+        </div>
+        
+        <!-- Elegant Navigation Section -->
+        <section class="navigation-section">
+            <h2 class="navigation-title">Continue Exploring</h2>
+            <div class="nav-buttons-container">
+                <a href="index.html" class="elegant-nav-button">
+                    <span class="button-icon">🏠</span>
+                    Homepage
+                </a>
+                <a href="celebrations.html" class="elegant-nav-button">
+                    <span class="button-icon">🎉</span>
+                    Korean Celebrations
+                </a>
+            </div>
+            <p class="nav-description">Return home or explore Korean festival traditions</p>
+        </section>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>한복의 아름다움</h3>
+                    <p>Experience the timeless elegance</p>
+                    <p>of Korean traditional clothing</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Cultural Heritage</h3>
+                    <p>Preserving traditions</p>
+                    <p>for future generations</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Learn More</h3>
+                    <p>Discover Korean culture</p>
+                    <p>through traditional wear</p>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="copyright">
+                <p>© 2024 Korean Traditional Wear Collection | Celebrating Hanbok Heritage</p>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

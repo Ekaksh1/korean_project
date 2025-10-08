@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Traditional Celebrations</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E3FDFD 0%, #CBF1F5 100%);
+            min-height: 100vh;
+            padding-top: 90px; /* Space for fixed header */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Fixed Header Bar */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .fixed-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title .korean-accent {
+            width: 15px;
+            height: 2px;
+            background: linear-gradient(90deg, #cd2e3a, #0047a0);
+            border-radius: 1px;
+        }
+
+        .header-navigation {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+        
+        .main-header {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(135deg, #CBF1F5 0%, #71C9CE 50%, #E3FDFD 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.2), 0 4px 8px rgba(203, 241, 245, 0.3);
+            border: 1px solid rgba(113, 201, 206, 0.1);
+        }
+        
+        .main-header h1 {
+            color: #2F7E84;
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        .main-header p {
+            color: #2F7E84;
+            font-size: 1.1em;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .celebrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .celebration-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 241, 245, 0.2) 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .celebration-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(113, 201, 206, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(203, 241, 245, 0.3) 100%);
+        }
+
+        .celebration-card h3 {
+            color: #71C9CE;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .celebration-card .korean-name {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .celebration-card .date {
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .celebration-card .description {
+            line-height: 1.6;
+            color: #424242;
+            margin-bottom: 15px;
+        }
+
+        .celebration-card .traditions {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .traditions h4 {
+            color: #71C9CE;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .traditions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .traditions li {
+            color: #424242;
+            margin-bottom: 5px;
+        }
+
+
+        .seasonal-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 241, 245, 0.2) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .seasonal-section h2 {
+            color: #71C9CE;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 50%, #CBF1F5 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.3), 0 4px 12px rgba(203, 241, 245, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+        }
+        
+        .copyright {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .fixed-header-content {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .header-title {
+                font-size: 1.2em;
+            }
+            
+            .header-navigation {
+                gap: 10px;
+            }
+            
+            .nav-button {
+                padding: 8px 16px;
+                font-size: 0.85em;
+            }
+            
+            body {
+                padding-top: 120px;
+            }
+
+            .celebrations-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .main-header h1 {
+                font-size: 2em;
+            }
+
+            .seasonal-section h2 {
+                font-size: 1.5em;
+            }
+        }
+        
+        /* Elegant Navigation Buttons */
+        .navigation-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(227, 253, 253, 0.7) 100%);
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.25);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(113, 201, 206, 0.2);
+        }
+        
+        .navigation-title {
+            color: #71C9CE;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+        
+        .nav-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .elegant-nav-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 35px;
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(113, 201, 206, 0.3), 0 2px 8px rgba(203, 241, 245, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+        }
+        
+        .elegant-nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .elegant-nav-button:hover::before {
+            left: 100%;
+        }
+        
+        .elegant-nav-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(113, 201, 206, 0.4), 0 6px 15px rgba(203, 241, 245, 0.3);
+            background: linear-gradient(135deg, #87CEEB 0%, #71C9CE 100%);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .elegant-nav-button:active {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.35);
+        }
+        
+        .button-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .nav-description {
+            color: #4A9FA5;
+            font-size: 1em;
+            margin-top: 20px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .elegant-nav-button {
+                width: 80%;
+                max-width: 280px;
+            }
+            
+            .navigation-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Main content of the page -->
+        <header class="main-header">
+            <h1>Hanbok in Korean Celebrations</h1>
+            <div class="korean-accent"></div>
+            <p>한복 축제 - Korean Traditional Dress in Festive Occasions</p>
+        </header>
+
+        <div class="seasonal-section">
+            <h2>Hanbok in Traditional Korean Celebrations</h2>
+            
+            <div class="celebrations-grid">
+                <!-- Seollal (Lunar New Year) -->
+                <div class="celebration-card">
+                    <h3>Seollal Hanbok</h3>
+                    <div class="korean-name">설날 한복 (Lunar New Year Hanbok)</div>
+                    <div class="date">1st day of 1st lunar month</div>
+                    <div class="description">
+                        During Seollal, wearing hanbok is essential for formal ceremonies and family gatherings. Children receive new hanbok as gifts, symbolizing a fresh start for the new year. The colors chosen often represent hopes for prosperity and good fortune.
+                    </div>
+                    <div class="traditions">
+                        <h4>Hanbok Traditions:</h4>
+                        <ul>
+                            <li><strong>Formal Hanbok</strong> - Best quality hanbok for ancestral ceremonies</li>
+                            <li><strong>Children's New Hanbok</strong> - Bright colors like red and yellow for luck</li>
+                            <li><strong>Family Coordination</strong> - Matching color schemes for family photos</li>
+                            <li><strong>Traditional Accessories</strong> - Norigae, hairpins, and traditional shoes</li>
+                            <li><strong>Ceremonial Colors</strong> - Specific colors for different family roles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Chuseok -->
+                <div class="celebration-card">
+                    <h3>Chuseok Hanbok</h3>
+                    <div class="korean-name">추석 한복 (Harvest Festival Hanbok)</div>
+                    <div class="date">15th day of 8th lunar month</div>
+                    <div class="description">
+                        Chuseok hanbok reflects the autumn season with warm, earthy tones. Families wear hanbok during ancestral ceremonies and traditional games. The harvest theme influences color choices, often featuring gold, brown, and warm orange hues.
+                    </div>
+                    <div class="traditions">
+                        <h4>Hanbok Elements:</h4>
+                        <ul>
+                            <li><strong>Autumn Colors</strong> - Gold, persimmon, and warm brown tones</li>
+                            <li><strong>Ceremonial Jeogori</strong> - Formal jackets for ancestral rituals</li>
+                            <li><strong>Harvest Patterns</strong> - Embroidery featuring chrysanthemums and vines</li>
+                            <li><strong>Family Hanbok</strong> - Coordinated outfits for multi-generational photos</li>
+                            <li><strong>Dance Hanbok</strong> - Special hanbok for Ganggangsullae circle dances</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Buddha's Birthday -->
+                <div class="celebration-card">
+                    <h3>Yeon Deung Hoe Hanbok</h3>
+                    <div class="korean-name">연등회 한복 (Lantern Festival Hanbok)</div>
+                    <div class="date">8th day of 4th lunar month</div>
+                    <div class="description">
+                        During Buddha's Birthday celebrations, hanbok in soft spring colors complement the colorful lanterns. White and pastel hanbok are popular choices, symbolizing purity and enlightenment. Many participants wear hanbok during temple visits and lantern parades.
+                    </div>
+                    <div class="traditions">
+                        <h4>Festival Hanbok:</h4>
+                        <ul>
+                            <li><strong>White Hanbok</strong> - Symbolizing purity and spiritual cleansing</li>
+                            <li><strong>Pastel Spring Colors</strong> - Light pink, mint green, and soft yellow</li>
+                            <li><strong>Lotus Patterns</strong> - Embroidered designs inspired by Buddhist symbols</li>
+                            <li><strong>Simple Elegance</strong> - Understated designs for temple ceremonies</li>
+                            <li><strong>Children's Hanbok</strong> - Bright colors matching the festive lanterns</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dano Festival -->
+                <div class="celebration-card">
+                    <h3>Dano Festival Hanbok</h3>
+                    <div class="korean-name">단오 한복 (Summer Festival Hanbok)</div>
+                    <div class="date">5th day of 5th lunar month</div>
+                    <div class="description">
+                        Dano festival hanbok features vibrant summer colors and lightweight fabrics. Women wear colorful hanbok while participating in traditional swinging and other outdoor activities. The hanbok designs often incorporate floral patterns celebrating the peak of spring.
+                    </div>
+                    <div class="traditions">
+                        <h4>Summer Hanbok Features:</h4>
+                        <ul>
+                            <li><strong>Lightweight Fabrics</strong> - Ramie and thin silk for warm weather</li>
+                            <li><strong>Vibrant Colors</strong> - Bright pinks, purples, and greens</li>
+                            <li><strong>Floral Embroidery</strong> - Peony and rose patterns for spring celebration</li>
+                            <li><strong>Active Wear Design</strong> - Comfortable cuts for swinging and games</li>
+                            <li><strong>Iris Motifs</strong> - Special patterns honoring the iris purification ritual</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Chilseok -->
+                <div class="celebration-card">
+                    <h3>Chilseok Weaving Hanbok</h3>
+                    <div class="korean-name">칠석 직조 한복 (Weaver's Festival Hanbok)</div>
+                    <div class="date">7th day of 7th lunar month</div>
+                    <div class="description">
+                        Chilseok celebrates the legendary weaver girl, making it especially meaningful for hanbok craftsmanship. Women wear hanbok featuring intricate weaving patterns and embroidery, honoring traditional textile arts. This festival highlights the connection between Korean dress and weaving skills.
+                    </div>
+                    <div class="traditions">
+                        <h4>Weaving Hanbok Traditions:</h4>
+                        <ul>
+                            <li><strong>Master Weaver Hanbok</strong> - Showcasing finest textile craftsmanship</li>
+                            <li><strong>Star Pattern Embroidery</strong> - Celestial designs honoring the weaver girl</li>
+                            <li><strong>Silk Demonstration</strong> - Wearing hanbok made from traditional silk weaving</li>
+                            <li><strong>Textile Art Display</strong> - Hanbok featuring various weaving techniques</li>
+                            <li><strong>Love Story Motifs</strong> - Romantic patterns celebrating the legend</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Wedding Hanbok -->
+                <div class="celebration-card">
+                    <h3>Wedding Hanbok</h3>
+                    <div class="korean-name">혼례 한복 (Traditional Wedding Dress)</div>
+                    <div class="date">Year-round celebration</div>
+                    <div class="description">
+                        Korean wedding hanbok represents the pinnacle of traditional dress elegance. The bride's hanbok features specific colors and symbols, while the groom wears complementary formal hanbok. These ceremonial outfits carry deep cultural significance and family heritage.
+                    </div>
+                    <div class="traditions">
+                        <h4>Wedding Hanbok Elements:</h4>
+                        <ul>
+                            <li><strong>Bride's Wonsamwonsam</strong> - Royal-style ceremonial hanbok with phoenix patterns</li>
+                            <li><strong>Groom's Formal Hanbok</strong> - Dark colors with gold accents and traditional hat</li>
+                            <li><strong>Family Coordination</strong> - Parents wear specific colors showing their roles</li>
+                            <li><strong>Symbolic Colors</strong> - Red for joy, blue for harmony, gold for prosperity</li>
+                            <li><strong>Traditional Accessories</strong> - Ceremonial jewelry, shoes, and hair ornaments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Coming of Age Hanbok -->
+                <div class="celebration-card">
+                    <h3>Coming of Age Hanbok</h3>
+                    <div class="korean-name">성인식 한복 (Adult Ceremony Hanbok)</div>
+                    <div class="date">Age 20 celebration</div>
+                    <div class="description">
+                        Young adults wear special hanbok during coming-of-age ceremonies, marking their transition to adulthood. The designs symbolize maturity and responsibility, often featuring more sophisticated colors and patterns than children's hanbok.
+                    </div>
+                    <div class="traditions">
+                        <h4>Adult Ceremony Features:</h4>
+                        <ul>
+                            <li><strong>Mature Colors</strong> - Deeper, more sophisticated color palettes</li>
+                            <li><strong>Formal Styling</strong> - Professional tailoring showing adult status</li>
+                            <li><strong>Traditional Ceremony</strong> - Wearing hanbok during official age ceremonies</li>
+                            <li><strong>Family Hanbok</strong> - Parents gifting formal hanbok sets</li>
+                            <li><strong>Cultural Education</strong> - Learning proper hanbok etiquette and history</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seasonal-section">
+            <h2>Modern Hanbok Celebrations</h2>
+            
+            <div class="celebrations-grid">
+                <!-- Hanbok Day -->
+                <div class="celebration-card">
+                    <h3>Hanbok Day</h3>
+                    <div class="korean-name">한복날</div>
+                    <div class="date">October (varies)</div>
+                    <div class="description">
+                        A modern celebration dedicated to promoting and preserving Korean traditional dress. People wear hanbok to palaces, cultural sites, and public events, often receiving free admission and special discounts for wearing traditional attire.
+                    </div>
+                    <div class="traditions">
+                        <h4>Modern Hanbok Activities:</h4>
+                        <ul>
+                            <li><strong>Palace Visits</strong> - Free entry to Gyeongbokgung and other palaces</li>
+                            <li><strong>Photo Sessions</strong> - Professional and casual hanbok photography</li>
+                            <li><strong>Cultural Experiences</strong> - Traditional games and performances</li>
+                            <li><strong>Hanbok Rentals</strong> - Accessible modern hanbok for tourists</li>
+                            <li><strong>Social Media</strong> - Sharing hanbok photos with hashtags</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Daily Hanbok Movement -->
+                <div class="celebration-card">
+                    <h3>Daily Hanbok Trend</h3>
+                    <div class="korean-name">일상 한복</div>
+                    <div class="date">Year-round lifestyle</div>
+                    <div class="description">
+                        A growing movement of wearing modified hanbok for everyday activities. Modern hanbok designs incorporate contemporary fashion while maintaining traditional elements, making Korean dress accessible for daily wear.
+                    </div>
+                    <div class="traditions">
+                        <h4>Modern Adaptations:</h4>
+                        <ul>
+                            <li><strong>Simplified Designs</strong> - Easy-to-wear daily hanbok styles</li>
+                            <li><strong>Modern Fabrics</strong> - Comfortable materials for active lifestyles</li>
+                            <li><strong>Fusion Fashion</strong> - Mixing hanbok elements with Western wear</li>
+                            <li><strong>Street Style</strong> - Casual hanbok for shopping and dining</li>
+                            <li><strong>Global Influence</strong> - Korean fashion inspiring international trends</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Elegant Navigation Section -->
+        <section class="navigation-section">
+            <h2 class="navigation-title">Continue Your Journey</h2>
+            <div class="nav-buttons-container">
+                <a href="index.html" class="elegant-nav-button">
+                    <span class="button-icon">🏠</span>
+                    Homepage
+                </a>
+                <a href="history.html" class="elegant-nav-button">
+                    <span class="button-icon">📜</span>
+                    Hanbok History
+                </a>
+            </div>
+            <p class="nav-description">Return home or discover the rich history of Korean traditional wear</p>
+        </section>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>한복 축제</h3>
+                    <p>Experience the elegance</p>
+                    <p>of Korean traditional dress</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Cultural Heritage</h3>
+                    <p>Preserving hanbok traditions</p>
+                    <p>for future generations</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Wear Hanbok</h3>
+                    <p>Celebrate Korean culture</p>
+                    <p>through traditional dress</p>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="copyright">
+                <p>© 2024 Korean Traditional Wear | Celebrating Hanbok in Festive Occasions</p>
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>
