@@ -21,27 +21,75 @@
                 </div>
                 <h2 style="color: #71C9CE; margin-bottom: 10px; font-size: 1.5em;">한복 (Hanbok)</h2>
                 <p style="line-height: 1.6; margin-bottom: 30px; font-size: 1.1em; color: #4A9FA5;">Traditional Korean clothing that embodies the grace and elegance of Korean culture</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
-                    <div class="component-card">
-                        <div class="image-placeholder" style="background: none; padding: 0;">
-                            <img src="images/Jeogori Image.jpg" alt="Jeogori" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <!-- Korean Traditional Clothing 3D Slider -->
+                <div class="hanbok-3d-slider" style="margin-top: 40px;">
+                    <!-- Navigation Buttons -->
+                    <button class="nav-btn prev-btn" onclick="changeSlide(-1)" aria-label="Previous slide">
+                        <span>←</span>
+                    </button>
+                    
+                    <button class="nav-btn next-btn" onclick="changeSlide(1)" aria-label="Next slide">
+                        <span>→</span>
+                    </button>
+                    
+                    <!-- Slider Container -->
+                    <div class="slider-scene">
+                        <!-- Jeogori Card -->
+                        <div class="clothing-card active" data-index="0">
+                            <div class="card-image">
+                                <img src="images/Jeogori Image.jpg" alt="Jeogori">
+                                <div class="card-overlay">
+                                    <h3>저고리</h3>
+                                    <p>Jeogori</p>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4>저고리 (Jeogori)</h4>
+                                <p>Traditional upper garment worn by both men and women</p>
+                                <div class="tags">
+                                    <span class="tag">Traditional</span>
+                                    <span class="tag">Unisex</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 style="color: #71C9CE; margin-bottom: 10px;">저고리 (Jeogori)</h3>
-                        <p style="font-size: 0.9em;">저고리 - Upper garment or jacket worn by both men and women</p>
-                    </div>
-                    <div class="component-card">
-                        <div class="image-placeholder" style="background: none; padding: 0;">
-                            <img src="images/chima.jpg" alt="Chima" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        
+                        <!-- Chima Card -->
+                        <div class="clothing-card" data-index="1">
+                            <div class="card-image">
+                                <img src="images/chima.jpg" alt="Chima">
+                                <div class="card-overlay">
+                                    <h3>치마</h3>
+                                    <p>Chima</p>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4>치마 (Chima)</h4>
+                                <p>Full skirt worn by women in vibrant colors</p>
+                                <div class="tags">
+                                    <span class="tag">Traditional</span>
+                                    <span class="tag">Women's</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 style="color: #71C9CE; margin-bottom: 10px;">치마 (Chima)</h3>
-                        <p style="font-size: 0.9em;">치마 - Full skirt worn by women, often in vibrant colors</p>
-                    </div>
-                    <div class="component-card">
-                        <div class="image-placeholder" style="background: none; padding: 0;">
-                            <img src="images/Baji.jpg" alt="Baji" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        
+                        <!-- Baji Card -->
+                        <div class="clothing-card" data-index="2">
+                            <div class="card-image">
+                                <img src="images/Baji.jpg" alt="Baji">
+                                <div class="card-overlay">
+                                    <h3>바지</h3>
+                                    <p>Baji</p>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4>바지 (Baji)</h4>
+                                <p>Traditional trousers worn by men</p>
+                                <div class="tags">
+                                    <span class="tag">Traditional</span>
+                                    <span class="tag">Men's</span>
+                                </div>
+                            </div>
                         </div>
-                        <h3 style="color: #71C9CE; margin-bottom: 10px;">바지 (Baji)</h3>
-                        <p style="font-size: 0.9em;">바지 - Traditional trousers worn by men</p>
                     </div>
                 </div>
             </div>
@@ -88,7 +136,141 @@
         </footer>
     </div>
 
-    <!-- Korean Translation Toggle Script -->
-    <script src="translate.js"></script>
+
+    <!-- Compact 3D Slider JavaScript -->
+    <script>
+        let currentSlideIndex = 0;
+        const cards = document.querySelectorAll('.clothing-card');
+        const totalSlides = cards.length;
+        
+        // Initialize 3D slider
+        function initSlider() {
+            showSlide(currentSlideIndex);
+            position3DCards();
+        }
+        
+        // Position cards in circular arrangement
+        function position3DCards() {
+            const radius = 400; // Radius of the circular arrangement
+            const angleStep = (2 * Math.PI) / totalSlides; // Angle between each card
+            
+            cards.forEach((card, index) => {
+                // Calculate the angle for this card based on current slide
+                const angle = (index - currentSlideIndex) * angleStep;
+                
+                // Calculate position on the circle
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius - radius;
+                const rotationY = angle * (180 / Math.PI);
+                
+                // Reset all classes
+                card.classList.remove('active');
+                
+                if (index === currentSlideIndex) {
+                    // Active card (front)
+                    card.classList.add('active');
+                    card.style.transform = `translate(-50%, -50%) translateX(0px) translateZ(100px) rotateY(0deg)`;
+                } else {
+                    // Hidden cards in circular arrangement
+                    card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotationY}deg)`;
+                }
+            });
+        }
+        
+        // Show specific slide with 3D transition
+        function showSlide(index) {
+            // Position cards in 3D
+            position3DCards();
+        }
+        
+        // Change slide by direction (1 for next, -1 for previous)
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= totalSlides) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            
+            showSlide(currentSlideIndex);
+        }
+        
+        // Go to specific slide
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+        
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initSlider();
+            
+            // Add touch event listeners
+            const sliderScene = document.querySelector('.slider-scene');
+            
+            if (sliderScene) {
+                sliderScene.addEventListener('touchstart', function(event) {
+                    touchStartX = event.changedTouches[0].screenX;
+                });
+                
+                sliderScene.addEventListener('touchend', function(event) {
+                    touchEndX = event.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+            }
+            
+            // Add mouse movement for subtle 3D effect
+            const sliderContainer = document.querySelector('.hanbok-3d-slider');
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mousemove', function(event) {
+                    const rect = sliderContainer.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    const rotateX = (event.clientY - centerY) / 30;
+                    const rotateY = (centerX - event.clientX) / 30;
+                    
+                    sliderContainer.style.transform = `perspective(1000px) rotateX(${
+                        Math.max(-3, Math.min(3, rotateX))
+                    }deg) rotateY(${
+                        Math.max(-3, Math.min(3, rotateY))
+                    }deg)`;
+                });
+                
+                sliderContainer.addEventListener('mouseleave', function() {
+                    sliderContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            }
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum distance for swipe
+            const swipeDistance = touchStartX - touchEndX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swiped left - go to next slide
+                    changeSlide(1);
+                } else {
+                    // Swiped right - go to previous slide
+                    changeSlide(-1);
+                }
+            }
+        }
+    </script>
+    
 </body>
 </html>

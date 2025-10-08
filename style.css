@@ -1,3 +1,5 @@
+
+
 body {
     margin: 0;
     padding: 0;
@@ -454,8 +456,328 @@ footer p {
 }
 
 
+/* Circular 3D Hanbok Slider */
+.hanbok-3d-slider {
+    position: relative;
+    max-width: 750px;
+    height: 350px;
+    margin: 0 auto;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    transition: all 0.4s ease;
+    overflow: visible;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* Subtle hover effect on slider */
+.hanbok-3d-slider:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(113, 201, 206, 0.15);
+}
+
+/* Slider Scene Container */
+.slider-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+/* Clothing Cards - Circular Carousel */
+.clothing-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 550px;
+    height: 300px;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 20px 50px rgba(113, 201, 206, 0.3);
+    border: 2px solid rgba(113, 201, 206, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    backface-visibility: hidden;
+}
+
+.clothing-card.active {
+    transform: translate(-50%, -50%) translateZ(100px) rotateY(0deg);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+    box-shadow: 0 30px 80px rgba(113, 201, 206, 0.4);
+    border: 2px solid rgba(113, 201, 206, 0.5);
+}
+
+/* Hide non-active cards */
+.clothing-card:not(.active) {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Card Image */
+.card-image {
+    position: relative;
+    width: 250px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px 0 0 20px;
+    background: #f8f9fa;
+    flex-shrink: 0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.clothing-card:hover .card-image img {
+    transform: scale(1.03);
+}
+
+/* Card Overlay */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.clothing-card.active:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay h3 {
+    font-size: 1.8em;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+}
+
+.card-overlay p {
+    font-size: 1.1em;
+    margin: 0;
+    color: #f0f0f0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Card Content */
+.card-content {
+    padding: 25px 30px;
+    text-align: left;
+    background: #ffffff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h4 {
+    color: #2c3e50;
+    font-size: 1.4em;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.card-content p {
+    color: #5a6c7d;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+    font-weight: 500;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.tag {
+    background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(113, 201, 206, 0.4);
+    transition: transform 0.2s ease;
+    text-shadow: none;
+    border: none;
+}
+
+.tag:hover {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 4px 12px rgba(113, 201, 206, 0.5);
+}
+
+/* Arrow Navigation Buttons */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(113, 201, 206, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-btn span {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+
+.prev-btn {
+    left: -30px;
+}
+
+.next-btn {
+    right: -30px;
+}
+
+/* Button hover animations */
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 25px rgba(113, 201, 206, 0.5);
+    background: linear-gradient(135deg, #87CEEB 0%, #71C9CE 100%);
+}
+
+/* Button press animation */
+.nav-btn:active {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 15px rgba(113, 201, 206, 0.4);
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Responsive Circular Slider */
+    .hanbok-3d-slider {
+        max-width: 450px;
+        height: 300px;
+        perspective: 800px;
+    }
+    
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6em;
+    }
+    
+    .prev-btn {
+        left: -20px;
+    }
+    
+    .next-btn {
+        right: -20px;
+    }
+    
+    .clothing-card {
+        width: 400px;
+        height: 250px;
+        flex-direction: column;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 150px;
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .card-content {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .tags {
+        justify-content: center;
+    }
+    
+    .clothing-card.active {
+        transform: translate(-50%, -50%) translateZ(0) rotateY(0deg);
+    }
+    
+    .clothing-card.next {
+        transform: translate(-50%, -50%) translateZ(-120px) rotateY(-25deg) translateX(100px);
+        opacity: 0.6;
+    }
+    
+    .clothing-card.prev {
+        transform: translate(-50%, -50%) translateZ(-120px) rotateY(25deg) translateX(-100px);
+        opacity: 0.6;
+    }
+    
+    .card-image {
+        height: 180px;
+    }
+    
+    .card-content {
+        padding: 15px;
+    }
+    
+    .card-content h4 {
+        font-size: 1.2em;
+    }
+    
+    .card-content p {
+        font-size: 0.9em;
+    }
+    
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8em;
+    }
+    
+    .prev-btn {
+        left: -70px;
+    }
+    
+    .next-btn {
+        right: -70px;
+    }
+
     .nav-buttons-container {
         flex-direction: column;
         align-items: center;
@@ -492,5 +814,97 @@ footer p {
 
     .seasonal-section h2 {
         font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hanbok-3d-slider {
+        max-width: 350px;
+        height: 280px;
+        perspective: 600px;
+    }
+    
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.6em;
+    }
+    
+    .prev-btn {
+        left: -15px;
+    }
+    
+    .next-btn {
+        right: -15px;
+    }
+    
+    .clothing-card {
+        width: 320px;
+        height: 220px;
+        flex-direction: column;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 120px;
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .card-content {
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .card-content h4 {
+        font-size: 1.1em;
+    }
+    
+    .card-content p {
+        font-size: 0.85em;
+    }
+    
+    .clothing-card.next {
+        transform: translate(-50%, -50%) translateZ(-100px) rotateY(-20deg) translateX(80px);
+        opacity: 0.5;
+    }
+    
+    .clothing-card.prev {
+        transform: translate(-50%, -50%) translateZ(-100px) rotateY(20deg) translateX(-80px);
+        opacity: 0.5;
+    }
+    
+    .card-image {
+        height: 160px;
+    }
+    
+    .card-content {
+        padding: 12px;
+    }
+    
+    .card-content h4 {
+        font-size: 1.1em;
+    }
+    
+    .card-content p {
+        font-size: 0.85em;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.6em;
+    }
+    
+    .prev-btn {
+        left: -60px;
+    }
+    
+    .next-btn {
+        right: -60px;
+    }
+    
+    .tag {
+        font-size: 0.75em;
+        padding: 3px 8px;
     }
 }
