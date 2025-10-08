@@ -11,7 +11,6 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #E3FDFD 0%, #CBF1F5 100%);
             min-height: 100vh;
-            padding-top: 90px; /* Space for fixed header */
         }
         
         .container {
@@ -19,100 +18,32 @@
             margin: 0 auto;
             padding: 20px;
         }
-        
-        /* Fixed Header Bar */
-        .fixed-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 100%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            padding: 15px 0;
-            backdrop-filter: blur(10px);
-        }
 
-        .fixed-header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header-title {
-            color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .header-title .korean-accent {
-            width: 15px;
-            height: 2px;
-            background: linear-gradient(90deg, #cd2e3a, #0047a0);
-            border-radius: 1px;
-        }
-
-        .header-navigation {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
+        /* Header Box Styles */
+        .header-box {
+            background: linear-gradient(135deg, #71C9CE 0%, #4A9FA5 50%, #CBF1F5 100%);
             border-radius: 20px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            font-size: 0.9em;
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .nav-button.active {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
-        }
-        
-        .main-header {
+            padding: 40px 20px;
             text-align: center;
-            padding: 50px 0;
-            background: linear-gradient(135deg, #CBF1F5 0%, #71C9CE 50%, #E3FDFD 100%);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.2), 0 4px 8px rgba(203, 241, 245, 0.3);
-            border: 1px solid rgba(113, 201, 206, 0.1);
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(113, 201, 206, 0.15), 0 4px 12px rgba(203, 241, 245, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .main-header h1 {
-            color: #2F7E84;
-            margin: 0;
-            font-size: 2.5em;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+        .header-box h1 {
+            font-size: 2.8em;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            margin: 0 0 10px 0;
             font-weight: bold;
         }
 
-        .main-header p {
-            color: #2F7E84;
-            font-size: 1.1em;
-            margin-top: 10px;
-            font-weight: 500;
+        .header-box p {
+            font-size: 1.3em;
+            color: white;
+            font-style: italic;
+            margin: 0;
+            opacity: 0.9;
         }
 
         .celebrations-grid {
@@ -194,7 +125,6 @@
             margin-bottom: 5px;
         }
 
-
         .seasonal-section {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 241, 245, 0.2) 100%);
             border-radius: 20px;
@@ -261,38 +191,10 @@
             margin-top: 10px;
         }
 
-        /* Mobile responsive */
         @media (max-width: 768px) {
-            .fixed-header-content {
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px;
-            }
-            
-            .header-title {
-                font-size: 1.2em;
-            }
-            
-            .header-navigation {
-                gap: 10px;
-            }
-            
-            .nav-button {
-                padding: 8px 16px;
-                font-size: 0.85em;
-            }
-            
-            body {
-                padding-top: 120px;
-            }
-
             .celebrations-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
-            }
-
-            .main-header h1 {
-                font-size: 2em;
             }
 
             .seasonal-section h2 {
@@ -386,35 +288,15 @@
             opacity: 0.9;
             font-style: italic;
         }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-buttons-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .elegant-nav-button {
-                width: 80%;
-                max-width: 280px;
-            }
-            
-            .navigation-title {
-                font-size: 1.5em;
-            }
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Main content of the page -->
-        <header class="main-header">
-            <h1>Hanbok in Korean Celebrations</h1>
-            <div class="korean-accent"></div>
-            <p>한복 축제 - Korean Traditional Dress in Festive Occasions</p>
-        </header>
+        <div class="header-box">
+            <h1>Korean Traditional Wear</h1>
+            <p>Discover the Elegance of Korean Culture</p>
+        </div>
 
         <div class="seasonal-section">
             <h2>Hanbok in Traditional Korean Celebrations</h2>
@@ -644,7 +526,7 @@
             </div>
             <div class="footer-divider"></div>
             <div class="copyright">
-                <p>© 2024 Korean Traditional Wear | Celebrating Hanbok in Festive Occasions</p>
+                <p>© 2025 Korean Traditional Wear | Celebrating Hanbok in Festive Occasions</p>
             </div>
         </footer>
     </div>
